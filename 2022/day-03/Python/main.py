@@ -1,12 +1,13 @@
 def main():
     def getPrio(elem):
-        return ord(elem) - 38 if elem.isupper() else ord(elem)-96
+        return ord(elem) - ord('A') + 27 if elem.isupper() else ord(elem) - ord('a') + 1
     
     answer1, answer2 = 0, 0
     rugsacks = [row.rstrip() for row in open("./input.txt").readlines()]
     
     for rugsack in rugsacks:
-        for prio in set(getPrio(elem) for elem in rugsack[:len(rugsack)//2]) & set(getPrio(elem) for elem in rugsack[len(rugsack)//2:]):
+        mid = len(rugsack)//2
+        for prio in set(getPrio(elem) for elem in rugsack[:mid]) & set(getPrio(elem) for elem in rugsack[mid:]):
             answer1 += prio
     
     for i in range(2, len(rugsacks), 3):
