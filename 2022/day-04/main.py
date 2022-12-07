@@ -2,7 +2,6 @@ def main():
     answer1, answer2 = 0, 0
     assignmentPairs = [row.rstrip() for row in open("./input.txt").readlines()]
     for pair in [ tuple(elem.split(',')) for elem in assignmentPairs ]:
-        print(pair)
         elf1 = pair[0].split('-')
         elf2 = pair[1].split('-')
         elf1Set = set([ i for i in range(int(elf1[0]), int(elf1[1])+1) ])
